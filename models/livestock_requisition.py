@@ -4,11 +4,12 @@ from models.request import Request
 
 
 class Livestock_Requisition(Request):
-    """ The livestock_requisition class, helps track movement of livestock to operators """
+    """ The livestock_requisition class, helps track movement
+    of livestock to operators """
     livestock_id = ""
     quantity = ""
     operaor_id = ""
     batch_id = ""
     admin_id = ""
+    admin_ids = []
     date = ""
-    livestock_type = ""

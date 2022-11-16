@@ -6,5 +6,5 @@ from models.base_model import BaseModel
 class Request(BaseModel):
     """ The request class, models request and requisitions needing approval """
     statuses = ["", "", ""]
-    signatories = []
+    sign_admin_id = []
     status = statuses[0]

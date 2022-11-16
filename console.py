@@ -6,14 +6,21 @@ import cmd
 import sys
 from models.__init__ import storage
 from models.base_model import BaseModel
-"""
+from models.base_model import BaseModel
 from models.user import User
-from models.place import Place
-from models.state import State
-from models.city import City
-from models.amenity import Amenity
-from models.review import Review
-"""
+from models.admin import Admin
+from models.operator import Operator
+from models.batch import Batch
+from models.cost import Cost
+from models.budget import Budget
+from models.casualty import Casualty
+from models.sale import Sale
+from models.livestock import Livestock
+from models.supplies import Supplies
+from models.livestock_requisition import Livestock_Requisition
+from models.supplies_requisition import Supplies_Requisition
+from models.request import Request
+
 
 class ChickenCreedCommand(cmd.Cmd):
     """
@@ -23,9 +30,17 @@ class ChickenCreedCommand(cmd.Cmd):
     prompt = '(ChickenCreed) ' if sys.__stdin__.isatty() else ''
 
     classes = {
-                "BaseModel": BaseModel,
+                "BaseModel": BaseModel, "User": User, "Admin": Admin,
+                "Operator": Operator, "Batch": Batch, "Cost": Cost,
+                "Budget": Budget, "Casualty": Casualty, "Sale": Sale,
+                "Livestock": Livestock, "Supplies": Supplies,
+                "Livestock_Requisition": Livestock_Requisition,
+                "Supplies_Requisition": Supplies_Requisition,
+                "Request": Request,
               }
+
     dot_cmds = ['all', 'count', 'show', 'destroy', 'update']
+
     types = {
              'number_rooms': int, 'number_bathrooms': int,
              'max_guest': int, 'price_by_night': int,

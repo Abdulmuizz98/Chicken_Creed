@@ -4,7 +4,8 @@ from models.base_model import BaseModel
 
 
 class Supplies(BaseModel):
-    """ The supplies class, models the stock of supplies available per purchase"""
+    """ The supplies class, models the stock of supplies
+    available per purchase"""
     cost_id = ""
     batch_id = ""
     supplies_type = ""

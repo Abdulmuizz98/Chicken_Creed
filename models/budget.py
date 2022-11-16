@@ -4,7 +4,7 @@ from models.base_model import BaseModel
 
 
 class Budget(BaseModel):
-    """ The budget class tracks buget subheads for a batch"""
+    """ The budget class models buget subheads for a batch"""
     head = ""
     subhead = ""
     batch_id = ""
