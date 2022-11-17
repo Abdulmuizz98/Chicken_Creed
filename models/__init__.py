@@ -2,8 +2,16 @@
 """
 Initializes the models package
 """
-from models.engine.file_storage import FileStorage
+from os import getenv
 
 
-storage = FileStorage()
+storage_t = 'CC_TYPE_STORAGE'
+
+
+if storage_t == 'db':
+    from models.engine.db_storage import DbStorage
+    storage = DbStorage()
+else:
+    from models.engine.file_storage import FileStorage
+    storage = FileStorage()
 storage.reload()

@@ -4,6 +4,7 @@ Module for the entry point of the command interpreter
 """
 import cmd
 import sys
+import shlex
 from models.__init__ import storage
 from models.base_model import BaseModel
 from models.base_model import BaseModel
@@ -125,23 +126,45 @@ class ChickenCreedCommand(cmd.Cmd):
         """ Overrides the emptyline method of CMD"""
         pass
 
-    def do_create(self, class_name):
+    def _key_value_parser(self, args):
+        """creates a dictionary from a list of strings"""
+        new_dict = {}
+        for arg in args:
+            if "=" in arg:
+                kvp = arg.split('=', 1)
+                key = kvp[0]
+                value = kvp[1]
+                if value[0] == value[-1] == '"':
+                    value = shlex.split(value)[0].replace('_', ' ')
+                else:
+                    try:
+                        value = int(value)
+                    except BaseException:
+                        try:
+                            value = float(value)
+                        except BaseException:
+                            continue
+                new_dict[key] = value
+        return new_dict
+
+    def do_create(self, arg):
         """
         Creates a new instance of BaseModel, saves it
         (to the JSON file) and prints the id.
         Ex: $ create BaseModel
         """
-        if not class_name:
+        args = arg.split()
+        if len(args) == 0:
             print("** class name missing **")
-            return
-        elif class_name not in ChickenCreedCommand.classes:
-            print("** class doesn't exist **")
-            return
+            return False
+        if args[0] in ChickenCreedCommand.classes:
+            new_dict = self._key_value_parser(args[1:])
+            instance = ChickenCreedCommand.classes[args[0]](**new_dict)
         else:
-            new_obj = ChickenCreedCommand.classes[class_name]()
-            new_obj.save()
-            print(new_obj.id)
-            new_obj.save()
+            print("** class doesn't exist **")
+            return False
+        print(instance.id)
+        instance.save()
 
     def do_show(self, args):
         """
