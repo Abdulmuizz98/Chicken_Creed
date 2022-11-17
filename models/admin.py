@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 """ Admin Module for Chicken Creed """
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
 from models import storage_t
 import sqlalchemy
-from sqlalchemy import relationship, Column, String, DateTime, ForeignKey
+from sqlalchemy import Column, String, DateTime, ForeignKey
+from sqlalchemy.orm import relationship
 
 
-class Admin(BaseModel):
+class Admin(BaseModel, Base):
     """ The admin class"""
     if storage_t == 'db':
         __tablename__ = 'admins'

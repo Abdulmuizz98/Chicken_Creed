@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 """ User Module for Chicken Creed """
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
 from models import storage_t
 import sqlalchemy
-from sqlalchemy import relationship, Column, String, DateTime, ForeignKey, relationship
+from sqlalchemy import Column, String, DateTime, ForeignKey
+from sqlalchemy.orm import relationship
 
-class User(BaseModel):
+class User(BaseModel, Base):
     """ The user class models a member of the cooperative"""
     if storage_t == 'db':
         __tablename__ = 'users'
