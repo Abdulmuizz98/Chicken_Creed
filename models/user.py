@@ -1,14 +1,26 @@
 #!/usr/bin/python3
 """ User Module for Chicken Creed """
 from models.base_model import BaseModel
-
+from models import storage_t
+import sqlalchemy
+from sqlalchemy import relationship, Column, String, DateTime, ForeignKey, relationship
 
 class User(BaseModel):
     """ The user class models a member of the cooperative"""
-    admin_id = ""
-    operator_id = ""
-    first_name = ""
-    last_name = ""
-    email = ""
-    password = ""
-    phone = ""
+    if storage_t == 'db':
+        __tablename__ = 'users'
+        first_name = Column(String(128), nullable=False)
+        last_name = Column(String(128), nullable=False)
+        email = Column(String(128), nullable=False)
+        password = Column(String(128), nullable=False)
+        phone = Column(String(20), nullable=True)
+        address = Column(String(128), nullable=True)
+        admin = relationship('Admin', uselist=False, back_populates='user')
+        operator = relationship('Operator', uselist=False, back_populates='user')
+    else:
+        first_name = ""
+        last_name = ""
+        email = ""
+        password = ""
+        phone = ""
+        address = ""
