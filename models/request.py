@@ -14,8 +14,11 @@ class Request(BaseModel, Base):
         __table__ = 'requests'
         batch_id = Column(String(60), ForeignKey('batches.id'))
         casualty_id = relationship('Casualty', uselist=False, back_populates='request')
+        cost_id = relationship('Cost', uselist=False, back_populates='request')
+        livestock_requisition_id = relationship('Livestock_Requisition', uselist=False, back_populates='request')
 
     else:
         statuses = ["", "", ""]
         sign_admin_id = []
         status = statuses[0]
+        raised_by_id = ""

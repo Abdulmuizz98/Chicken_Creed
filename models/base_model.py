@@ -5,7 +5,7 @@ Chiken Creed project objects
 """
 from uuid import uuid4
 from datetime import datetime
-from models import storage_t
+from models import storage, storage_t
 import sqlalchemy
 from sqlalchemy import Column, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
