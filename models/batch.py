@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Batch Module for Chicken Creed """
 from models.base_model import BaseModel, Base
-from models import storage_t, storage
+from models import storage_t
 import sqlalchemy
 from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Float, Table
 from sqlalchemy.orm import relationship
@@ -68,6 +68,7 @@ class Batch(BaseModel, Base):
         # method for cost
 
     if storage_t != 'db':
+        from models import storage
         def instance_list_helper(self, Obj):
             """Gets a list from storage"""
             obj_list = []

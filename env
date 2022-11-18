@@ -1,0 +1,1 @@
+CC_MYSQL_USER=cc_dev CC_MYSQL_PWD=cc_dev_pwd CC_MYSQL_HOST=localhost CC_MYSQL_DB=cc_dev_db CC_TYPE_STORAGE=db

@@ -5,7 +5,7 @@ Initializes the models package
 from os import getenv
 
 
-storage_t = 'CC_TYPE_STORAGE'
+storage_t = getenv('CC_TYPE_STORAGE')
 
 
 if storage_t == 'db':
