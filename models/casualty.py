@@ -20,9 +20,9 @@ class Casualty(BaseModel, Base):
         livestock = relationship('Livestock')
         casualty_count = Column(Integer, nullable=False)
     else:
+        description = ""
         batch_id = ""
         request_id = ""
         operator_id = ""
         livestock_id = ""
         casualty_count = 0
-        description = ""

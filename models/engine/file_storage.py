@@ -52,6 +52,7 @@ class FileStorage:
         from models.batch import Batch
         from models.cost import Cost
         from models.budget import Budget
+        from models.head import Head
         from models.casualty import Casualty
         from models.sale import Sale
         from models.livestock import Livestock
@@ -67,7 +68,7 @@ class FileStorage:
                         "Livestock": Livestock, "Supplies": Supplies,
                         "Livestock_Requisition": LivestockRequisition,
                         "Supplies_Requisition": SuppliesRequisition,
-                        "Request": Request,
+                        "Request": Request, "Head": Head,
                   }
 
         try:
@@ -88,3 +89,7 @@ class FileStorage:
             key = obj.__class__.__name__ + '.' + obj.id
             if key in self.__objects:
                 del self.__objects[key]
+
+    def close(self):
+        """call reload() method for deserializing the JSON file to objects"""
+        self.reload()

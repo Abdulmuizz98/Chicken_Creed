@@ -22,6 +22,7 @@ class Budget(BaseModel, Base):
     else:
         head_id = ""
         batch_id = ""
+        name = ""
         unit_cost = 0.00
         quantity = 0.00
         unit_name = ""

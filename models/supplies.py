@@ -17,9 +17,9 @@ class Supplies(BaseModel, Base):
         cost = relationship('Cost', back_populates='supplies')
         quantity = Column(Integer, nullable=False)
     else:
-        cost_id = "" # one to one mapping
         batch_id = "" 
         supplies_type = ""
+        cost_id = "" # one to one mapping
         quantity = 0
 
     if storage_t != 'db':

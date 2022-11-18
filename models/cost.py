@@ -19,7 +19,7 @@ class Cost(BaseModel, Base):
         request_id = Column(String(60), ForeignKey('requests_id'), nullable=False)
         request = relationship('Request', back_populates='cost')
         livestock = relationship('Livestock', back_populates='cost')
-        supplies = relationship('Supplies', back_populates='cost')
+        supplies = relationship('Supplies', back_populates='cost') # its a one don't be deceived by s in supplies
         description = Column(String(1024))
         unit_cost = Column(Numeric, nullable=False)
         quantity = Column(Numeric)

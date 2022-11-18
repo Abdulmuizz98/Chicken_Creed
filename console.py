@@ -14,6 +14,7 @@ from models.operator import Operator
 from models.batch import Batch
 from models.cost import Cost
 from models.budget import Budget
+from models.head import Head
 from models.casualty import Casualty
 from models.sale import Sale
 from models.livestock import Livestock
@@ -37,7 +38,7 @@ class ChickenCreedCommand(cmd.Cmd):
                 "Livestock": Livestock, "Supplies": Supplies,
                 "Livestock_Requisition": LivestockRequisition,
                 "Supplies_Requisition": SuppliesRequisition,
-                "Request": Request,
+                "Request": Request, "Head": Head,
               }
 
     dot_cmds = ['all', 'count', 'show', 'destroy', 'update']

@@ -18,9 +18,9 @@ class Livestock(BaseModel, Base):
         quantity = Column(Integer, nullable=False)
         price = Column(Numeric, nullable=False )
     else:
-        cost_id = "" # one to one mapping
         batch_id = "" 
         livestock_type = ""
+        cost_id = "" # one to one mapping
         quantity = 0
         price = 0.00
 

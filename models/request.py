@@ -41,10 +41,10 @@ class Request(BaseModel, Base):
     else:
         batch_id = ""
         status = Status.RAISED
-        casualty = ""
-        cost = ""
-        livestock_requisition = ""
-        supplies_requisition = ""
+        # casualty = ""
+        # cost = ""
+        # livestock_requisition = ""
+        # supplies_requisition = ""
         user_id = ""
 
     if storage_t != 'db':
