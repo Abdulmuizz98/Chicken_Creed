@@ -40,12 +40,14 @@ class Batch(BaseModel, Base):
         subscription_max_unit = Column(Integer, nullable=False)
         requests = relationship('Request')
         livestocks = relationship('Livestock')
+        livestock_requisitions = relationship('LivestockRequisition')
         sales = relationship('Sale')
         costs = relationship('Cost')
         budgets = relationship('Budget')
         supplies = relationship('Supplies')
+        supplies_requisitions = relationship('SuppliesRequisition')
         casualties = relationship('Casualty')
-        operators = relationship('Operator', secondary='batch_operator', back_populates='bath_operator') # many to many
+        operators = relationship('Operator', secondary='batch_operator', back_populates='batch_operator') # many to many
         subscribers = relationship('User', secondary='batch_user', back_populates='batch_user') # many to many 
     else:
         subscription_start_date = ""

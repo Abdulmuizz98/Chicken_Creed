@@ -3,7 +3,7 @@
 from models.base_model import BaseModel, Base
 from models import storage_t, storage
 import sqlalchemy
-from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Numeric
+from sqlalchemy import Column, String, DateTime, ForeignKey, Integer
 from sqlalchemy.orm import relationship
 
 class Supplies(BaseModel, Base):
@@ -11,9 +11,29 @@ class Supplies(BaseModel, Base):
     available per purchase"""
     if storage_t == 'db':
         __table__ = 'supplies'
-        batch_id = Column(String(60), ForeignKey('batches.id'))
-    cost_id = ""
-    batch_id = ""
-    supplies_type = ""
-    quantity = 0
-    requisitioned = 0
+        batch_id = Column(String(60), ForeignKey('batches.id'), nullable=False)
+        supplies_type = Column(String(128), nullable=False)
+        cost_id = Column(String(60), ForeignKey('batches.id'), nullable=False)
+        cost = relationship('Cost', back_populates='supplies')
+        quantity = Column(Integer, nullable=False)
+    else:
+        cost_id = "" # one to one mapping
+        batch_id = "" 
+        supplies_type = ""
+        quantity = 0
+
+    if storage_t != 'db':
+        def instance_list_helper(self, Obj):
+            """Gets a list from storage"""
+            obj_list = []
+            all_obj = storage.all(Obj)
+            for obj in all_obj.values():
+                if obj.supplies_id == self.id:
+                    obj_list.append(obj)
+            return obj_list
+
+        @property
+        def requisitions(self):
+            """getter attribute returns the list of SuppliesRequisition instances"""
+            from models.supplies_requisition import SuppliesRequisition
+            return self.instance_list_helper(SuppliesRequisition)

@@ -56,8 +56,8 @@ class FileStorage:
         from models.sale import Sale
         from models.livestock import Livestock
         from models.supplies import Supplies
-        from models.livestock_requisition import Livestock_Requisition
-        from models.supplies_requisition import Supplies_Requisition
+        from models.livestock_requisition import LivestockRequisition
+        from models.supplies_requisition import SuppliesRequisition
         from models.request import Request
 
         classes = {
@@ -65,8 +65,8 @@ class FileStorage:
                         "Operator": Operator, "Batch": Batch, "Cost": Cost,
                         "Budget": Budget, "Casualty": Casualty, "Sale": Sale,
                         "Livestock": Livestock, "Supplies": Supplies,
-                        "Livestock_Requisition": Livestock_Requisition,
-                        "Supplies_Requisition": Supplies_Requisition,
+                        "Livestock_Requisition": LivestockRequisition,
+                        "Supplies_Requisition": SuppliesRequisition,
                         "Request": Request,
                   }
 

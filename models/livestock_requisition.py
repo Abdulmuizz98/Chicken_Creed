@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """ Livestock_Requisition Module for Chicken Creed """
-from models.request import Request
+from models.base_model import BaseModel, Base
 from models import storage_t, storage
 import sqlalchemy
 from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Numeric
 from sqlalchemy.orm import relationship
 
-class Livestock_Requisition(Request):
+class LivestockRequisition(BaseModel):
     """ The livestock_requisition class, helps track movement
     of livestock to operators """
     if storage_t == 'db':
@@ -15,8 +15,7 @@ class Livestock_Requisition(Request):
         livestock = relationship('Livestock')
         operator_id = Column(String(60), ForeignKey('operators.id'), nullable=False)
         operator = relationship('Operator')
-        operator_id = Column(String(60), ForeignKey('operators.id'), nullable=False)
-        operator = relationship('Operator')
+        batch_id = Column(String(60), ForeignKey('batches.id'), nullable=False)
         request_id = Column(String(60), ForeignKey('requests_id'), nullable=False)
         request = relationship('Request', back_populates='livestock_requisition')
         quantity = Column(Integer, nullable=False)

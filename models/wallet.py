@@ -3,7 +3,7 @@
 from models.base_model import BaseModel
 
 
-class User(BaseModel):
-    """ The user class, contains state ID and name """
+class Wallet(BaseModel):
+    """ The wallet class, tracks a chicken creed wallet"""
     state_id = ""
     name = ""

@@ -11,13 +11,15 @@ class Cost(BaseModel, Base):
     """ The cost class models expenditure on a batch carried out by an admin"""
     if storage_t == 'db':
         __table__ = 'costs'
-        batch_id = Column(String(60), ForeignKey('batches.id'))
+        batch_id = Column(String(60), ForeignKey('batches.id'), nullable=False)
         head_id =  Column(String(60), ForeignKey('heads_id'), nullable=False)
         head = relationship('Cost')
         budget_id = Column(String(60), ForeignKey('budgets_id'))
         budget = relationship('Cost')
         request_id = Column(String(60), ForeignKey('requests_id'), nullable=False)
         request = relationship('Request', back_populates='cost')
+        livestock = relationship('Livestock', back_populates='cost')
+        supplies = relationship('Supplies', back_populates='cost')
         description = Column(String(1024))
         unit_cost = Column(Numeric, nullable=False)
         quantity = Column(Numeric)
