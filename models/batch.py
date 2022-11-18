@@ -68,9 +68,9 @@ class Batch(BaseModel, Base):
         # method for cost
 
     if storage_t != 'db':
-        from models import storage
         def instance_list_helper(self, Obj):
             """Gets a list from storage"""
+            from models import storage
             obj_list = []
             all_obj = storage.all(Obj)
             for obj in all_obj.values():

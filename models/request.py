@@ -2,7 +2,7 @@
 """ Request Module for Chicken Creed """
 from models.base_model import BaseModel, Base
 import enum
-from models import storage_t, storage
+from models import storage_t
 import sqlalchemy
 from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Float, Enum, Table
 from sqlalchemy.orm import relationship
@@ -51,6 +51,7 @@ class Request(BaseModel, Base):
     if storage_t != 'db':
         def instance_list_helper(self, Obj):
             """Gets a list from storage"""
+            from models import storage
             obj_list = []
             all_obj = storage.all(Obj)
             for obj in all_obj.values():

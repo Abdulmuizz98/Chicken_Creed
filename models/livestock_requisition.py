@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """ Livestock_Requisition Module for Chicken Creed """
 from models.base_model import BaseModel, Base
-from models import storage_t, storage
+from models import storage_t
 import sqlalchemy
 from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Float
 from sqlalchemy.orm import relationship
 
-class LivestockRequisition(BaseModel):
+class LivestockRequisition(BaseModel, Base):
     """ The livestock_requisition class, helps track movement
     of livestock to operators """
     if storage_t == 'db':

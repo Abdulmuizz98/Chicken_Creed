@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Livestock Module for Chicken Creed """
 from models.base_model import BaseModel, Base
-from models import storage_t, storage
+from models import storage_t
 import sqlalchemy
 from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Float
 from sqlalchemy.orm import relationship
@@ -27,6 +27,7 @@ class Livestock(BaseModel, Base):
     if storage_t != 'db':
         def instance_list_helper(self, Obj):
             """Gets a list from storage"""
+            from models import storage
             obj_list = []
             all_obj = storage.all(Obj)
             for obj in all_obj.values():

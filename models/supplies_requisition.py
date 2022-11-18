@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Supplies_Requisition Module for Chicken Creed """
 from models.base_model import BaseModel, Base
-from models import storage_t, storage
+from models import storage_t
 import sqlalchemy
 from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Float
 from sqlalchemy.orm import relationship

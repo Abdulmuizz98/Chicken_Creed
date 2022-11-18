@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Casualty Module for Chicken Creed """
 from models.base_model import BaseModel, Base
-from models import storage_t, storage
+from models import storage_t
 import sqlalchemy
 from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Float, Text
 from sqlalchemy.orm import relationship
