@@ -15,7 +15,7 @@ class Casualty(BaseModel, Base):
         request_id = Column(String(60), ForeignKey('requests_id'), nullable=False)
         operator_id = Column(String(60), ForeignKey('operators.id'), nullable=False)
         livestock_id = Column(String(60), ForeignKey('livestocks_id'), nullable=False)
-        request = relationship('Request', back_populates='casualty')
+        request = relationship('Request', back_populates='casualty', cascade="all, delete, delete-orphan")
         operator = relationship('Operator')
         livestock = relationship('Livestock')
         casualty_count = Column(Integer, nullable=False)

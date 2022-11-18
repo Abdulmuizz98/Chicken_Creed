@@ -17,7 +17,7 @@ class Cost(BaseModel, Base):
         budget_id = Column(String(60), ForeignKey('budgets_id'))
         budget = relationship('Cost')
         request_id = Column(String(60), ForeignKey('requests_id'), nullable=False)
-        request = relationship('Request', back_populates='cost')
+        request = relationship('Request', back_populates='cost', cascade="all, delete, delete-orphan")
         livestock = relationship('Livestock', back_populates='cost')
         supplies = relationship('Supplies', back_populates='cost') # its a one don't be deceived by s in supplies
         description = Column(String(1024))
