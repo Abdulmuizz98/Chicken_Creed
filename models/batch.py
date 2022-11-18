@@ -38,6 +38,8 @@ class Batch(BaseModel, Base):
         estimated_duration = Column(Integer, nullable=False, default=60)
         subscription_unit_price = Column(Float, nullable=False)
         subscription_max_unit = Column(Integer, nullable=False)
+        request_id = Column(String(60), ForeignKey('requests_id'), nullable=False) # for one to one request matching
+        request = relationship('Request', back_populates='cost') # for one to one request matching
         requests = relationship('Request')
         livestocks = relationship('Livestock')
         livestock_requisitions = relationship('LivestockRequisition')
