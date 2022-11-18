@@ -10,7 +10,7 @@ from sqlalchemy.orm import relationship
 class Cost(BaseModel, Base):
     """ The cost class models expenditure on a batch carried out by an admin"""
     if storage_t == 'db':
-        __table__ = 'costs'
+        __tablename__ = 'costs'
         batch_id = Column(String(60), ForeignKey('batches.id'), nullable=False)
         head_id =  Column(String(60), ForeignKey('heads_id'), nullable=False)
         head = relationship('Cost')

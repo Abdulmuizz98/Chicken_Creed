@@ -10,7 +10,7 @@ from sqlalchemy.orm import relationship
 class Head(BaseModel, Base):
     """ The budget class models buget subheads for a batch"""
     if storage_t == 'db':
-        __table__ = 'heads'
+        __tablename__ = 'heads'
         name = Column(String(128), nullable=False)
     else:
         name = ""

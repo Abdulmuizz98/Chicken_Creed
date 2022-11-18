@@ -10,7 +10,7 @@ class LivestockRequisition(BaseModel):
     """ The livestock_requisition class, helps track movement
     of livestock to operators """
     if storage_t == 'db':
-        __table__ = 'livestock_requisitions'
+        __tablename__ = 'livestock_requisitions'
         livestock_id = Column(String(60), ForeignKey('livestocks.id'), nullable=False)
         livestock = relationship('Livestock')
         operator_id = Column(String(60), ForeignKey('operators.id'), nullable=False)

@@ -10,7 +10,7 @@ class Supplies(BaseModel, Base):
     """ The supplies class, models the stock of supplies
     available per purchase"""
     if storage_t == 'db':
-        __table__ = 'supplies'
+        __tablename__ = 'supplies'
         batch_id = Column(String(60), ForeignKey('batches.id'), nullable=False)
         supplies_type = Column(String(128), nullable=False)
         cost_id = Column(String(60), ForeignKey('batches.id'), nullable=False)

@@ -10,7 +10,7 @@ from sqlalchemy.orm import relationship
 class Budget(BaseModel, Base):
     """ The budget class models buget subheads for a batch"""
     if storage_t == 'db':
-        __table__ = 'budgets'
+        __tablename__ = 'budgets'
         batch_id = Column(String(60), ForeignKey('batches.id'))
         head_id =  Column(String(60), ForeignKey('heads_id'), nullable=False)
         head = relationship('Budget')

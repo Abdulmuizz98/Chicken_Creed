@@ -28,7 +28,7 @@ if storage_t == 'db':
 class Request(BaseModel, Base):
     """ The request class, models request and requisitions needing approval """
     if storage_t == 'db':
-        __table__ = 'requests'
+        __tablename__ = 'requests'
         batch_id = Column(String(60), ForeignKey('batches.id'), nullable=False)
         status = Column(Enum(Status), nullable=False, default=Status.RAISED)
         casualty = relationship('Casualty', uselist=False, back_populates='request')

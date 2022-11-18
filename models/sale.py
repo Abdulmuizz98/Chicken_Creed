@@ -9,7 +9,7 @@ from sqlalchemy.orm import relationship
 class Sale(BaseModel, Base):
     """ The sale class, models entries for the sale of livestock """
     if storage_t == 'db':
-        __table__ = 'sales'
+        __tablename__ = 'sales'
         batch_id = Column(String(60), ForeignKey('batches.id'), nullable=False)
         livestock_id =  Column(String(60), ForeignKey('livestocks.id'), nullable=False)
         livestock = relationship('Livestock')

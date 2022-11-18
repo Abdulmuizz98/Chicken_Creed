@@ -9,7 +9,7 @@ from sqlalchemy.orm import relationship
 class Casualty(BaseModel, Base):
     """ The casualty class, models a casualty report by operators """
     if storage_t == 'db':
-        __table__ = 'casualties'
+        __tablename__ = 'casualties'
         description = Column(String(1024), nullable=False)
         batch_id = Column(String(60), ForeignKey('batches.id'),nullable=False)
         request_id = Column(String(60), ForeignKey('requests_id'), nullable=False)

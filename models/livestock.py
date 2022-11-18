@@ -10,7 +10,7 @@ class Livestock(BaseModel, Base):
     """ The livestock class, models the stock of
     livestock available per purchase"""
     if storage_t == 'db':
-        __table__ = 'livestocks'
+        __tablename__ = 'livestocks'
         batch_id = Column(String(60), ForeignKey('batches.id'), nullable=False)
         livestock_type = Column(String(128), nullable=False)
         cost_id = Column(String(60), ForeignKey('batches.id'), nullable=False)

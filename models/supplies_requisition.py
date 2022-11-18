@@ -10,7 +10,7 @@ class SuppliesRequisition(BaseModel):
     """ The supplies_requisition class, helps track movement
     of supplies to operators """
     if storage_t == 'db':
-        __table__ = 'supplies_requisitions'
+        __tablename__ = 'supplies_requisitions'
         supplies_id = Column(String(60), ForeignKey('suppliess.id'), nullable=False)
         supplies = relationship('supplies')
         operator_id = Column(String(60), ForeignKey('operators.id'), nullable=False)
