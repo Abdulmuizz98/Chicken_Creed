@@ -3,7 +3,7 @@
 from models.base_model import BaseModel, Base
 from models import storage_t, storage
 import sqlalchemy
-from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Numeric, Text
+from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Float, Text
 from sqlalchemy.orm import relationship
 
 class Casualty(BaseModel, Base):

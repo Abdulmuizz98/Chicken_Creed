@@ -4,7 +4,7 @@ from models.base_model import BaseModel, Base
 import enum
 from models import storage_t, storage
 import sqlalchemy
-from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Numeric, Enum, Table
+from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Float, Enum, Table
 from sqlalchemy.orm import relationship
 
 

@@ -3,7 +3,7 @@
 from models.base_model import BaseModel, Base
 from models import storage_t, storage
 import sqlalchemy
-from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Numeric
+from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Float
 from sqlalchemy.orm import relationship
 
 class LivestockRequisition(BaseModel):
@@ -17,7 +17,7 @@ class LivestockRequisition(BaseModel):
         operator = relationship('Operator')
         batch_id = Column(String(60), ForeignKey('batches.id'), nullable=False)
         request_id = Column(String(60), ForeignKey('requests_id'), nullable=False)
-        request = relationship('Request', back_populates='livestock_requisition')
+        request = relationship('Request', back_populates='livestock_requisition', cascade="all, delete, delete-orphan")
         quantity = Column(Integer, nullable=False)
     else:
         livestock_id = ""

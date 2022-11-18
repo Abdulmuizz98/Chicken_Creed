@@ -3,7 +3,7 @@
 from models.base_model import BaseModel, Base
 from models import storage_t, storage
 import sqlalchemy
-from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Numeric
+from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Float
 from sqlalchemy.orm import relationship
 
 
@@ -21,9 +21,9 @@ class Cost(BaseModel, Base):
         livestock = relationship('Livestock', back_populates='cost')
         supplies = relationship('Supplies', back_populates='cost') # its a one don't be deceived by s in supplies
         description = Column(String(1024))
-        unit_cost = Column(Numeric, nullable=False)
-        quantity = Column(Numeric)
-        total_cost = Column(Numeric, nullable=False)
+        unit_cost = Column(Float, nullable=False)
+        quantity = Column(Float)
+        total_cost = Column(Float, nullable=False)
     else:
         head_id = ""
         budget_id = ""

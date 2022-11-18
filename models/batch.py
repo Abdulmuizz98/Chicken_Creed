@@ -3,7 +3,7 @@
 from models.base_model import BaseModel, Base
 from models import storage_t, storage
 import sqlalchemy
-from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Numeric, Table
+from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Float, Table
 from sqlalchemy.orm import relationship
 
 if storage_t == 'db':
@@ -36,7 +36,7 @@ class Batch(BaseModel, Base):
         start_date = Column(DateTime, nullable=False)
         end_date = Column(DateTime, nullable=False)
         estimated_duration = Column(Integer, nullable=False, default=60)
-        subscription_unit_price = Column(Numeric, nullable=False)
+        subscription_unit_price = Column(Float, nullable=False)
         subscription_max_unit = Column(Integer, nullable=False)
         requests = relationship('Request')
         livestocks = relationship('Livestock')

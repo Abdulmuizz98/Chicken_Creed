@@ -3,7 +3,7 @@
 from models.base_model import BaseModel, Base
 from models import storage_t, storage
 import sqlalchemy
-from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Numeric
+from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Float
 from sqlalchemy.orm import relationship
 
 class Sale(BaseModel, Base):
@@ -16,8 +16,8 @@ class Sale(BaseModel, Base):
         user_id =  Column(String(60), ForeignKey('users.id'), nullable=False)
         user = relationship('User')
         quantity = Column(Integer, nullable=False)
-        kg = Column(Numeric, nullable=False)
-        total_price = Column(Numeric, nullable=False)
+        kg = Column(Float, nullable=False)
+        total_price = Column(Float, nullable=False)
         
     else:
         batch_id = ""

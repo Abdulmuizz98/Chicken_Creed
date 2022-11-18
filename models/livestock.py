@@ -3,7 +3,7 @@
 from models.base_model import BaseModel, Base
 from models import storage_t, storage
 import sqlalchemy
-from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Numeric
+from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Float
 from sqlalchemy.orm import relationship
 
 class Livestock(BaseModel, Base):
@@ -16,7 +16,7 @@ class Livestock(BaseModel, Base):
         cost_id = Column(String(60), ForeignKey('batches.id'), nullable=False)
         cost = relationship('Cost', back_populates='livestock')
         quantity = Column(Integer, nullable=False)
-        price = Column(Numeric, nullable=False )
+        price = Column(Float, nullable=False )
     else:
         batch_id = "" 
         livestock_type = ""

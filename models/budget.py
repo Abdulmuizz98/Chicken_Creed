@@ -3,7 +3,7 @@
 from models.base_model import BaseModel, Base
 from models import storage_t, storage
 import sqlalchemy
-from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Numeric
+from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Float
 from sqlalchemy.orm import relationship
 
 
@@ -15,10 +15,10 @@ class Budget(BaseModel, Base):
         head_id =  Column(String(60), ForeignKey('heads_id'), nullable=False)
         head = relationship('Budget')
         name = Column(String(128), nullable=False)
-        unit_cost = Column(Numeric, nullable=False)
-        quantity = Column(Numeric)
+        unit_cost = Column(Float, nullable=False)
+        quantity = Column(Float)
         unit_name = Column(String(20))
-        total_cost = Column(Numeric, nullable=False)
+        total_cost = Column(Float, nullable=False)
     else:
         head_id = ""
         batch_id = ""
