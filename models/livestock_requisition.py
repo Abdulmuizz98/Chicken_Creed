@@ -16,7 +16,7 @@ class LivestockRequisition(BaseModel, Base):
         operator_id = Column(String(60), ForeignKey('operators.id'), nullable=False)
         operator = relationship('Operator')
         batch_id = Column(String(60), ForeignKey('batches.id'), nullable=False)
-        request_id = Column(String(60), ForeignKey('requests_id'), nullable=False)
+        request_id = Column(String(60), ForeignKey('requests.id'), nullable=False)
         request = relationship('Request', back_populates='livestock_requisition', cascade="all, delete, delete-orphan")
         quantity = Column(Integer, nullable=False)
     else:
