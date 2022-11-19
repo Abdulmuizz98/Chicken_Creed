@@ -87,4 +87,5 @@ class BaseModel:
         """
         Delete the current instance(self) from storage
         """
+        from models import storage
         storage.delete(self)
