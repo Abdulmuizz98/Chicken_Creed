@@ -264,7 +264,7 @@ class ChickenCreedCommand(cmd.Cmd):
                 count += 1
         print(count)
 
-    def do_update(self, id_str):
+    def do_update(self, args):
         """
         Updates an instance based on the class name and
         id by adding or updating attribute (save the change
