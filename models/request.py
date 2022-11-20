@@ -33,12 +33,12 @@ class Request(BaseModel, Base):
         status = Column(Enum(Status), nullable=False, default=Status.RAISED)
         casualty = relationship('Casualty', uselist=False, back_populates='request')
         cost = relationship('Cost', uselist=False, back_populates='request')
-        batch = relationship('Batch', uselist=False, back_populates='request') # for one to one batch matching
+        # batch = relationship('Batch', uselist=False, back_populates='request') # for one to one batch matching
         livestock_requisition = relationship('LivestockRequisition', uselist=False, back_populates='request')
         supplies_requisition = relationship('SuppliesRequisition', uselist=False, back_populates='request')
         user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
         user = relationship('User') # raised_by_user_id  (many to one)
-        admins = relationship("Admin", secondary='request_admin', back_populates='request_admin') # sign_by_admin_ids (many to many)
+        admins = relationship("Admin", secondary=request_admin, viewonly=False) # sign_by_admin_ids (many to many)
     else:
         batch_id = ""
         status = Status.RAISED

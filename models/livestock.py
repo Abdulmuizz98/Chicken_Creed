@@ -13,7 +13,7 @@ class Livestock(BaseModel, Base):
         __tablename__ = 'livestocks'
         batch_id = Column(String(60), ForeignKey('batches.id'), nullable=False)
         livestock_type = Column(String(128), nullable=False)
-        cost_id = Column(String(60), ForeignKey('batches.id'), nullable=False)
+        cost_id = Column(String(60), ForeignKey('costs.id'), nullable=False)
         cost = relationship('Cost', back_populates='livestock')
         quantity = Column(Integer, nullable=False)
         price = Column(Float, nullable=False )

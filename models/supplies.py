@@ -13,7 +13,7 @@ class Supplies(BaseModel, Base):
         __tablename__ = 'supplies'
         batch_id = Column(String(60), ForeignKey('batches.id'), nullable=False)
         supplies_type = Column(String(128), nullable=False)
-        cost_id = Column(String(60), ForeignKey('batches.id'), nullable=False)
+        cost_id = Column(String(60), ForeignKey('costs.id'), nullable=False)
         cost = relationship('Cost', back_populates='supplies')
         quantity = Column(Integer, nullable=False)
     else:

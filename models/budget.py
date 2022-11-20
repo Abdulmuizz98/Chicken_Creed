@@ -13,7 +13,7 @@ class Budget(BaseModel, Base):
         __tablename__ = 'budgets'
         batch_id = Column(String(60), ForeignKey('batches.id'))
         head_id =  Column(String(60), ForeignKey('heads.id'), nullable=False)
-        head = relationship('Budget')
+        head = relationship('Head')
         name = Column(String(128), nullable=False)
         unit_cost = Column(Float, nullable=False)
         quantity = Column(Float)

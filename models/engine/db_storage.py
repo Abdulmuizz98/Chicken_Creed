@@ -26,7 +26,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
 classes = {
-                "BaseModel": BaseModel, "User": User, "Admin": Admin,
+                "User": User, "Admin": Admin,
                 "Operator": Operator, "Batch": Batch, "Cost": Cost,
                 "Budget": Budget, "Casualty": Casualty, "Sale": Sale,
                 "Livestock": Livestock, "Supplies": Supplies,

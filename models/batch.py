@@ -38,8 +38,8 @@ class Batch(BaseModel, Base):
         estimated_duration = Column(Integer, nullable=False, default=60)
         subscription_unit_price = Column(Float, nullable=False)
         subscription_max_unit = Column(Integer, nullable=False)
-        request_id = Column(String(60), ForeignKey('requests.id'), nullable=False) # for one to one request matching
-        request = relationship('Request_req', back_populates='batch', cascade="all, delete, delete-orphan") # for one to one request matching
+        #request_id = Column(String(60), ForeignKey('requests.id'), nullable=False) # for one to one request matching
+        #request = relationship('Request', back_populates='batch', cascade="all, delete, delete-orphan") # for one to one request matching
         requests = relationship('Request')
         livestocks = relationship('Livestock')
         livestock_requisitions = relationship('LivestockRequisition')
@@ -49,8 +49,8 @@ class Batch(BaseModel, Base):
         supplies = relationship('Supplies')
         supplies_requisitions = relationship('SuppliesRequisition')
         casualties = relationship('Casualty')
-        operators = relationship('Operator', secondary='batch_operator', back_populates='batch_operator') # many to many
-        subscribers = relationship('User', secondary='batch_user', back_populates='batch_user') # many to many 
+        operators = relationship('Operator', secondary=batch_operator, viewonly=False) # many to many
+        subscribers = relationship('User', secondary=batch_user, viewonly=False) # many to many 
     else:
         subscription_start_date = ""
         subscription_end_date = ""

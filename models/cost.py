@@ -13,11 +13,11 @@ class Cost(BaseModel, Base):
         __tablename__ = 'costs'
         batch_id = Column(String(60), ForeignKey('batches.id'), nullable=False)
         head_id =  Column(String(60), ForeignKey('heads.id'), nullable=False)
-        head = relationship('Cost')
+        head = relationship('Head')
         budget_id = Column(String(60), ForeignKey('budgets.id'))
-        budget = relationship('Cost')
+        budget = relationship('Budget')
         request_id = Column(String(60), ForeignKey('requests.id'), nullable=False)
-        request = relationship('Request', back_populates='cost', cascade="all, delete, delete-orphan")
+        request = relationship('Request', back_populates='cost')
         livestock = relationship('Livestock', back_populates='cost')
         supplies = relationship('Supplies', back_populates='cost') # its a one don't be deceived by s in supplies
         description = Column(String(1024))
